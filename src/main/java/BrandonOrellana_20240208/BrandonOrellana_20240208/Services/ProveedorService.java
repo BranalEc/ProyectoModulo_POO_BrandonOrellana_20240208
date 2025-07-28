@@ -17,10 +17,11 @@ import static ch.qos.logback.classic.spi.ThrowableProxyVO.build;
 @RequiredArgsConstructor
 @Builder
 public class ProveedorService {
-
+    //Aqui estamos inyectando el repository en el service
     @Autowired
     private static ProveedorRepository acceso;
 
+    //Aqui estamos obteniendo todos los campos de la tabla
     public List<ProveedorDTO> findAll(){
         return acceso.findAll()
                 .stream()
@@ -28,6 +29,7 @@ public class ProveedorService {
                 .toList();
     }
 
+    //Este es el crear pero me daba error en builder y no pude arregrarlo y es el unico que me dio error
     /*public ProveedorDTO crearProveedor(ProveedorDTO dto){
         ProveedorEntity proveedor = ProveedorEntity.builder()
                 .providerName(dto.getProviderName())
@@ -42,7 +44,7 @@ public class ProveedorService {
         ProveedorEntity guardado = acceso.save(proveedor);
         return convertDto(guardado);
     }*/
-
+    //aqui estamos mandando a actualizar todos los valores excepto la id
     public Optional <ProveedorDTO>actualizarProveedor(Long id, ProveedorDTO dto){
         return acceso.findById(id).map(proveedor -> {
             proveedor.setProviderName(dto.getProviderName());
@@ -55,7 +57,7 @@ public class ProveedorService {
             return convertDto(acceso.save(proveedor));
         });
     }
-
+    //Aqui estamos eliminando en base a la id
     public static boolean eliminarProveedor(Long id){
         if (acceso.existsById(id)){
             acceso.deleteById(id);
@@ -64,6 +66,7 @@ public class ProveedorService {
         return false;
     }
 
+    //Aqui estamos convirtiendo todos los valores entity a dto
     private ProveedorDTO convertDto(ProveedorEntity proveedor){
         return ProveedorDTO.builder()
                 .providerID(proveedor.getProviderID())
