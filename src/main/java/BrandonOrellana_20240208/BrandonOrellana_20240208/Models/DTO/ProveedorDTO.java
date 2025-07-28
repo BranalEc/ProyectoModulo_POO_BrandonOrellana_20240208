@@ -3,6 +3,7 @@ package BrandonOrellana_20240208.BrandonOrellana_20240208.Models.DTO;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
 import org.springframework.boot.context.properties.bind.DefaultValue;
@@ -12,9 +13,9 @@ import org.springframework.boot.context.properties.bind.DefaultValue;
 @EqualsAndHashCode
 @Getter @Setter
 public class ProveedorDTO {
-    private Long id;
+    private Long providerID;
 
-    @NotBlank(message = "El nombre del proveedor es obligatorio")
+    @NotNull(message = "El nombre del proveedor es obligatorio")
     private String providerName;
 
     private String providerPhone;
@@ -24,7 +25,7 @@ public class ProveedorDTO {
     @Email(message = "Debe ser un correo valido")
     private String providerEmail;
 
-    @NotBlank(message = "El codigo es obligatorio")
+    @NotNull(message = "El codigo es obligatorio")
     private String providerCode;
 
     private Integer providerStatus;
