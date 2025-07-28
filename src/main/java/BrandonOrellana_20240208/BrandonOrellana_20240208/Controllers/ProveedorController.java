@@ -11,27 +11,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/proveedor")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class ProveedorController {
 
     @Autowired
     private final ProveedorService proveedorService;
 
-    @PostMapping
+    /*@PostMapping
     public ResponseEntity<?>crear(@Valid @RequestBody ProveedorDTO dto){
-        return ResponseEntity.ok(ProveedorService.crearProveedor(dto));
-    }
+        return ResponseEntity.ok(proveedorService.crearProveedor(dto));
+    }*/
 
-    @GetMapping
+    @GetMapping("")
     public List<ProveedorDTO>findAll(){
-        return ProveedorService.findAll();
+        return proveedorService.findAll();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ProveedorDTO>actualizar(@PathVariable Long id, @RequestBody ProveedorDTO dto){
-        return ProveedorService.actualizarProveedor(id, dto)
-                .map(ResponseEntity.ok()
+        return proveedorService.actualizarProveedor(id, dto)
+                .map(ResponseEntity::ok)
                         .orElseGet(()->ResponseEntity.notFound().build());
     }
 

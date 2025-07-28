@@ -15,6 +15,7 @@ import static ch.qos.logback.classic.spi.ThrowableProxyVO.build;
 
 @Service
 @RequiredArgsConstructor
+@Builder
 public class ProveedorService {
 
     @Autowired
@@ -27,7 +28,7 @@ public class ProveedorService {
                 .toList();
     }
 
-    public ProveedorDTO crearProveedor(ProveedorDTO dto){
+    /*public ProveedorDTO crearProveedor(ProveedorDTO dto){
         ProveedorEntity proveedor = ProveedorEntity.builder()
                 .providerName(dto.getProviderName())
                 .providerPhone(dto.getProviderPhone())
@@ -40,10 +41,10 @@ public class ProveedorService {
 
         ProveedorEntity guardado = acceso.save(proveedor);
         return convertDto(guardado);
-    }
+    }*/
 
-    public static Optional <ProveedorDTO>actualizarProveedor(Long id, ProveedorDTO dto){
-        return ProveedorRepository.findById(id).map(proveedor -> {
+    public Optional <ProveedorDTO>actualizarProveedor(Long id, ProveedorDTO dto){
+        return acceso.findById(id).map(proveedor -> {
             proveedor.setProviderName(dto.getProviderName());
             proveedor.setProviderPhone(dto.getProviderPhone());
             proveedor.setProviderAddress(dto.getProviderAddress());

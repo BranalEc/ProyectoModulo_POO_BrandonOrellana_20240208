@@ -20,22 +20,22 @@ public class ProveedorEntity {
     @Column(name = "PROVIDERNAME")
     private String providerName;
 
-    @Column(name = "PROVIDERNAME")
+    @Column(name = "PROVIDERPHONE")
     private String providerPhone;
 
-    @Column(name = "PROVIDERNAME")
+    @Column(name = "PROVIDERADDRESS")
     private String providerAddress;
 
-    @Column(name = "PROVIDERNAME")
+    @Column(name = "PROVIDEREMAIL")
     private String providerEmail;
 
-    @Column(name = "PROVIDERNAME")
+    @Column(name = "PROVIDERCODE")
     private String providerCode;
 
-    @Column(name = "PROVIDERNAME")
+    @Column(name = "PROVIDERSTATUS")
     private Integer providerStatus;
 
-    @Column(name = "PROVIDERNAME")
+    @Column(name = "PROVIDERCOMMENTS")
     private String providerComments;
 
 }
